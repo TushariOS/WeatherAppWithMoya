@@ -10,15 +10,21 @@ import UIKit
 
 class DailyInfoForecastTableViewCell: UITableViewCell {
 
+    // MARK: Outlets
+    
+    @IBOutlet weak var dayLabel: UILabel!
+    @IBOutlet weak var tempLabel: UILabel!
+    @IBOutlet weak var infoImage: UIImageView!
+    
+    //MARK:- LifeCycle
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    
+    func setUpData(model: ForecastViewModel) {
+        dayLabel.text = "\(model.low) - \(model.heigh)ºF"
+        tempLabel.text = model.dayoftheWeek
+        infoImage.image = model.image
     }
-
 }

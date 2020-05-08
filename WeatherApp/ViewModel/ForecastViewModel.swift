@@ -8,11 +8,27 @@
 
 import UIKit
 
-struct ForestViewModel {
+struct ForecastViewModel {
     let dayoftheWeek: String
-    let height: Int
+    let heigh: Int
     let low: Int
     let image: UIImage?
+    
+    static func formate(_ date: Date) -> String {
+        let formater = DateFormatter()
+        formater.dateFormat = "EEEE"
+        return formater.string(from: date)
+    }
 }
 
-e
+extension ForecastViewModel {
+    
+    init?(dailyForecast: DailyDatum) {
+        let date = Date(timeIntervalSince1970: TimeInterval(dailyForecast.time))
+        dayoftheWeek = ForecastViewModel.formate(date)
+        heigh = Int(dailyForecast.temperatureHigh)
+        low = Int(dailyForecast.temperatureLow)
+        image = UIImage(named: dailyForecast.icon)
+    }
+    
+}

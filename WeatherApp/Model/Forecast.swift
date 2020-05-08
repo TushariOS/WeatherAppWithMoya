@@ -10,17 +10,17 @@ struct Forecast: Codable {
     let latitude, longitude: Double
     let timezone: String
     let currently: Currently
-    let minutely: Minutely
+  //  let minutely: Minutely
     let hourly: Hourly
     let daily: Daily
     let flags: Flags
-    let offset: Int
+    let offset: Double
 }
 
 // MARK: Forecast convenience initializers and mutators
 
 extension Forecast {
-    init(data: Data) throws {
+    init(data:  Data) throws {
         self = try newJSONDecoder().decode(Forecast.self, from: data)
     }
 
@@ -40,18 +40,18 @@ extension Forecast {
         longitude: Double? = nil,
         timezone: String? = nil,
         currently: Currently? = nil,
-        minutely: Minutely? = nil,
+       // minutely: Minutely? = nil,
         hourly: Hourly? = nil,
         daily: Daily? = nil,
         flags: Flags? = nil,
-        offset: Int? = nil
+        offset: Double? = nil
     ) -> Forecast {
         return Forecast(
             latitude: latitude ?? self.latitude,
             longitude: longitude ?? self.longitude,
             timezone: timezone ?? self.timezone,
             currently: currently ?? self.currently,
-            minutely: minutely ?? self.minutely,
+          //  minutely: minutely ?? self.minutely,
             hourly: hourly ?? self.hourly,
             daily: daily ?? self.daily,
             flags: flags ?? self.flags,
@@ -470,7 +470,7 @@ extension Minutely {
         icon: String? = nil,
         data: [MinutelyDatum]? = nil
     ) -> Minutely {
-        return Minutely(
+        return Minutely (
             summary: summary ?? self.summary,
             icon: icon ?? self.icon,
             data: data ?? self.data
