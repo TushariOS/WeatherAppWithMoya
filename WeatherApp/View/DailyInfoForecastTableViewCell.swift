@@ -22,7 +22,7 @@ class DailyInfoForecastTableViewCell: UITableViewCell {
         // Initialization code
     }
     
-    func setUpData(model: ForecastViewModel) {
+    func setUpData(model: ForecastDispalyModel) {
         dayLabel.text = "\(model.low) - \(model.heigh)ºF"
         tempLabel.text = model.dayoftheWeek
         infoImage.image = model.image
